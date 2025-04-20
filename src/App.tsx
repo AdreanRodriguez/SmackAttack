@@ -1,26 +1,17 @@
 import "./App.css";
 import { useGameLogic } from "./hooks/useGameLogic";
 import { Gameboard } from "./components/gameboard/Gameboard";
+import StartGameModal from "./components/startGameModal/StartGameModal";
 import PortraitBlocker from "./components/portraitBlocker/PortraitBlocker";
+import GameOverModal from "./components/gameOverModal/GameOverModal";
 
 function App() {
-  const {
-    gameState,
-    isGameReady,
-    isGameStarted,
-    activeCharacters,
-    handleCharacterClick,
-    handleCharacterRemoval,
-  } = useGameLogic();
+  const { gameState, isGameReady, resetGameState, isGameStarted, setIsGameStarted, activeCharacters, handleCharacterClick, handleCharacterRemoval } = useGameLogic();
 
   return (
     <>
-      <div id="ui"></div>
-      <div className="loader" id="loader">
-        <img className="loader-logo" src="/images/logo.png" />
-        <img className="spinner" src="/images/spinner.svg" />
-      </div>
-
+      {isGameReady && !isGameStarted && <StartGameModal setIsGameStarted={setIsGameStarted} resetGameState={resetGameState} />}
+      {gameState.isGameOver && <GameOverModal score={gameState.score} resetGameState={resetGameState} />}
       <PortraitBlocker />
 
       {isGameReady && (

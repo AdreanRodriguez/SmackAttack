@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { gameOver } from "../gameLogic/gameOver";
-import { startGame } from "../gameLogic/startGame";
+// import { gameOver } from "../gameLogic/gameOver";
+// import { startGame } from "../gameLogic/startGame";
 import { CharacterType } from "../types/characterType";
 import { preloadAssets } from "../preload/preloadAssets";
 import { spawnCharacter } from "../gameLogic/spawnCharacter";
@@ -13,15 +13,13 @@ export function useGameLogic() {
   const [activeCharacters, setActiveCharacters] = useState<CharacterType[]>([]);
   const [gameState, setGameState] = useState<GameState>({ ...DEFAULT_GAME_STATE });
 
-  const [isPortrait, setIsPortrait] = useState<boolean>(
-    window.matchMedia("(orientation: portrait)").matches
-  );
+  const [isPortrait, setIsPortrait] = useState<boolean>(window.matchMedia("(orientation: portrait)").matches);
 
   function startLoaderCheck() {
     let checkLoader = setInterval(() => {
       if (document.querySelector("#loader")) {
         // console.log("Hittade #loader.");
-        window.ClubHouseGame?.gameLoaded({ hideInGame: true });
+        // window.ClubHouseGame?.gameLoaded({ hideInGame: true });
         clearInterval(checkLoader);
       }
     }, 100);
@@ -62,13 +60,13 @@ export function useGameLogic() {
 
     // Spelet är game over
     if (gameState.isGameOver) {
-      gameOver(gameState.score);
+      // gameOver(gameState.score);
       return;
     }
 
     // Spelet har inte startat
     if (!isGameStarted) {
-      startGame(setIsGameStarted, resetGameState);
+      // startGame(setIsGameStarted, resetGameState);
       return;
     }
 
@@ -84,13 +82,7 @@ export function useGameLogic() {
       cleanup();
       clearInterval(timerInterval);
     };
-  }, [
-    isPortrait,
-    isGameStarted,
-    gameState.isGameOver,
-    gameState.spawnInterval,
-    gameState.animationDuration,
-  ]);
+  }, [isPortrait, isGameStarted, gameState.isGameOver, gameState.spawnInterval, gameState.animationDuration]);
 
   function updateTime(currentState: GameState): GameState {
     if (currentState.isGameOver) return currentState;
@@ -123,11 +115,7 @@ export function useGameLogic() {
   function handleCharacterClick(character: CharacterType) {
     if (character.clickedCharacter) return;
 
-    setActiveCharacters((prevActiveCharacters) =>
-      prevActiveCharacters.map((char) =>
-        char.positionId === character.positionId ? { ...char, clickedCharacter: true } : char
-      )
-    );
+    setActiveCharacters((prevActiveCharacters) => prevActiveCharacters.map((char) => (char.positionId === character.positionId ? { ...char, clickedCharacter: true } : char)));
 
     setGameState((prevGameState) => updateGameState(prevGameState, character.type));
   }
@@ -142,7 +130,9 @@ export function useGameLogic() {
     gameState,
     isGameReady,
     isGameStarted,
+    resetGameState,
     activeCharacters,
+    setIsGameStarted,
     handleCharacterClick,
     handleCharacterRemoval,
   };
