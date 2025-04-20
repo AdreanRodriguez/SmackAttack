@@ -1,0 +1,78 @@
+.portraitBlocker__container {
+  z-index: 1;
+  height: 100svh;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(193, 3, 3, 1) 0%, rgba(37, 137, 166, 1) 100%);
+  position: relative;
+}
+
+.portrait-image__evil,
+.portrait-image__good {
+  max-width: 40vw;
+}
+
+.portrait-image__evil {
+  top: -7px;
+  left: 50%;
+  position: absolute;
+  filter: drop-shadow(2px 4px 6px black);
+  transform: translateX(-50%) rotateX(180deg);
+}
+
+.portrait-image__good {
+  left: 50%;
+  bottom: -7px;
+  position: absolute;
+  transform: translateX(-50%);
+  filter: drop-shadow(2px 4px 6px black);
+}
+
+.portrait-blocker {
+  top: 50%;
+  left: 50%;
+  width: 15rem;
+  height: 15rem;
+  display: block;
+  position: absolute;
+  animation: rotate 1.8s infinite cubic-bezier(0.44, -0.48, 0.19, 1.61);
+}
+
+@keyframes rotate {
+  0% {
+    transform: translate(-50%, -50%) rotateZ(0deg) scale(0.7);
+  }
+  70% {
+    transform: translate(-50%, -50%) rotateZ(-90deg) scale(1.1);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotateZ(-90deg) scale(1);
+  }
+}
+
+@keyframes rotate-collaboration {
+  0% {
+    transform: translate(-50%, -50%) rotateZ(-50deg) scale(0.1);
+  }
+  70% {
+    transform: translate(-50%, -50%) rotateZ(-5deg) scale(1.1);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotateZ(0deg) scale(1);
+  }
+}
+
+@media screen and (orientation: landscape) {
+  .portraitBlocker__container {
+    display: none;
+  }
+
+  .portrait-blocker {
+    display: none;
+  }
+
+  .portrait-image__evil,
+  .portrait-image__good {
+    display: none;
+    opacity: 0;
+  }
+}

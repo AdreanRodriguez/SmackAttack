@@ -1,0 +1,16 @@
+.character-box {
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+  background: transparent;
+  /* Avkommentera raden nedan för att se placering av boxarna karaktärerna kommer fram i */
+  /* border: 2px solid red; */
+}
+
+.character-box.flipped img {
+  transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+}

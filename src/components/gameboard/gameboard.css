@@ -1,0 +1,90 @@
+.gameboard-container {
+  height: 100svh;
+  display: none;
+  overflow: hidden;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-image: url("/assets/background.png");
+}
+
+.blur-background {
+  filter: blur(5px) grayscale(0.7);
+}
+
+.gameboard__score__text {
+  z-index: 2;
+  top: 0.5rem;
+  right: 0.5rem;
+  color: white;
+  min-width: 10ch;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: krita;
+  border-radius: 5px;
+  position: absolute;
+  margin-right: 0.5rem;
+  padding: 0.7rem 0.5rem 0.5rem 0.5rem;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.gameboard__timer__text {
+  top: 0.5rem;
+  left: 0.5rem;
+  color: white;
+  min-width: 10ch;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: krita;
+  position: absolute;
+  border-radius: 5px;
+  padding: 0.7rem 0.5rem 0.5rem 0.5rem;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.gameboard__timer__number {
+  margin-left: 0.5rem;
+  color: var(--highlight-orange);
+}
+
+.gameboard__score__number {
+  font-size: 20px;
+  font-family: krita;
+  margin-left: 0.5rem;
+  color: var(--highlight-orange);
+}
+
+.feedback-red {
+  transform: scale(1.1);
+  background-color: rgba(255, 0, 0, 0.6);
+}
+
+.feedback-green {
+  transform: scale(1.1);
+  background-color: rgba(0, 90, 0, 0.6);
+}
+
+.time-pulse {
+  animation: timePulse 0.5s infinite;
+}
+
+@keyframes timePulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    color: red;
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@media screen and (orientation: landscape) {
+  .gameboard-container {
+    display: block;
+  }
+}
