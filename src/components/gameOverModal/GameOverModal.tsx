@@ -15,7 +15,7 @@ export default function GameOverModal({ score, resetGameState }: GameOverModalPr
         <p className="gameOverModal__score__text">
           Poäng: <span className="gameOverModal__score__number">{score}</span>
         </p>
-        <Button className={"gameOverModal__button"} onClick={resetGameState} name="Restart" />
+        <Button className={"gameOverModal__button"} onClick={resetGameState} name="Starta om" />
       </div>
     </section>
   );
