@@ -12,6 +12,7 @@ export function useGameLogic() {
   const [isGameStarted, setIsGameStarted] = useState<boolean>(false);
   const [activeCharacters, setActiveCharacters] = useState<CharacterType[]>([]);
   const [gameState, setGameState] = useState<GameState>({ ...DEFAULT_GAME_STATE });
+  const [isFullscreen, setIsFullscreen] = useState(false);
 
   const [isPortrait, setIsPortrait] = useState<boolean>(window.matchMedia("(orientation: portrait)").matches);
 
@@ -129,8 +130,10 @@ export function useGameLogic() {
   return {
     gameState,
     isGameReady,
+    isFullscreen,
     isGameStarted,
     resetGameState,
+    setIsFullscreen,
     activeCharacters,
     setIsGameStarted,
     handleCharacterClick,

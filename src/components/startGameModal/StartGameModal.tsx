@@ -15,32 +15,25 @@ export default function StartGameModal({ setIsGameStarted, resetGameState }: Gam
 
   return (
     <>
-      <section className="gameStartModal__wrapper">
-        <div className="gameStartModal">
-          <h1 className="gameStartModal__title">SmackAttack</h1>
+      <section className="startGameModal__wrapper">
+        <div className="startGameModal">
+          <h1 className="startGameModal__title">SmackAttack</h1>
 
-          <figcaption className="gameStartModal__rule__good">
-            <figure className="gameStartModal__image__container">
-              <img className="gameStartModal__image" src="/assets/goodCharacters/good.png" alt="Den gode" />
+          <figcaption className="startGameModal__rule__good">
+            <figure className="startGameModal__image__container">
+              <img className="startGameModal__image" src="/assets/goodCharacters/good.png" alt="Den gode" />
             </figure>
-            <p className="gameStartModal__text">- 3 sekunder</p>
+            <p className="startGameModal__text">minus 3 sekunder vid klick</p>
           </figcaption>
 
-          <figcaption className="gameStartModal__rule__evil">
-            <p className="gameStartModal__text">10 Poäng + 2 sekunder</p>
-            <figure className="gameStartModal__image__container">
-              <img className="gameStartModal__image" src="/assets/evilCharacters/evil.png" alt="Den onde" />
+          <figcaption className="startGameModal__rule__evil">
+            <p className="startGameModal__text">10 Poäng plus 2 sekunder vid klick</p>
+            <figure className="startGameModal__image__container">
+              <img className="startGameModal__image" src="/assets/evilCharacters/evil.png" alt="Den onde" />
             </figure>
           </figcaption>
-
-          {/* <p className="gameStartModal__good-luck">Lycka till!</p> */}
-
-          <Button
-            // className="gameStartModal__play-button"
-            onClick={handleStartGame}
-            name="SPELA"
-          />
-          <p className="gameStartModal__collaboration">
+          <Button onClick={handleStartGame} name="SPELA" />
+          <p className="startGameModal__collaboration">
             Illustratör:
             <a href="https://www.instagram.com/jimmieslice/" target="_blank">
               JimmieSlice
